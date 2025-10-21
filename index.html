@@ -5,5 +5,48 @@
   </head>
   <body>
     <h1>Hola soy Rudo Zan!</h1>
+    
+    <button onclick="generarYGuardar()">Generar código</button>
+
   </body>
+  <script type="module">
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyC_RNzlnl7sb7g4yd-6j9mNpDwWJdReS7g",
+    authDomain: "holarudo.firebaseapp.com",
+    projectId: "holarudo",
+    storageBucket: "holarudo.firebasestorage.app",
+    messagingSenderId: "858908525639",
+    appId: "1:858908525639:web:a993355ee4b2e29ac21d62",
+    measurementId: "G-5ZSQFF0L8M"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  // Función para generar y guardar
+  async function generarYGuardar() {
+    const codigo = Math.floor(Math.random() * 9000) + 1000;
+
+    try {
+      await addDoc(collection(db, "codigos"), {
+        valor: codigo,
+        timestamp: new Date()
+      });
+      alert("Código generado y guardado: " + codigo);
+    } catch (e) {
+      console.error("Error al guardar:", e);
+      alert("Error al guardar el código.");
+    }
+  }
+</script>
 </html>
