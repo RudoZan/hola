@@ -5,17 +5,20 @@
   </head>
   <body>
     <h1>Hola soy Rudo Zan! </h1>
-    <p>Con SupaBase 5</p>
+    <p>Con SupaBase 6</p>
     <button onclick="generarYGuardar()">Generar código</button>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
+<script>
+    const SUPABASE_URL = 'https://junonydusnrcumbjjzqt.supabase.co';
+    const SUPABASE_ANON_KEY = 'R6rvUOl2IbzJIytl';
+
     // Initialize Supabase client
     const supabaseUrl = 'https://junonydusnrcumbjjzqt.supabase.co';
     const supabaseKey = 'R6rvUOl2IbzJIytl'; // Replace with your actual public key
-    const { createClient } = supabaseJs;
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
+    const { createClient } = window.supabase;
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    
     // Función para generar y guardar
     async function generarYGuardar() {
         const codigo = Math.floor(Math.random() * 9000) + 1000;
