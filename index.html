@@ -13,7 +13,8 @@
     // Initialize Supabase client
     const supabaseUrl = 'https://junonydusnrcumbjjzqt.supabase.co';
     const supabaseKey = 'R6rvUOl2IbzJIytl'; // Replace with your actual public key
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    const { createClient } = supabase;
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     // Función para generar y guardar
     async function generarYGuardar() {
